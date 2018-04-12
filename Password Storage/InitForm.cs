@@ -14,8 +14,10 @@ namespace Password_Storage
 	/// </summary>
 	public partial class InitForm : Form
 	{
+		
 		public InitForm() {
 			InitializeComponent();
+			this.FormClosing += (s, e) => Application.Exit();
 		}
 		
 		void BtnSelectPathClick(object sender, EventArgs e) {
@@ -31,10 +33,8 @@ namespace Password_Storage
 		}	
 		
 		void BtnContinueClick(object sender, EventArgs e){
+			// storing a password isn't required, we use that as our encryption key
 			string dataPath = txtDataPath.Text;
-			string password = txtPassword.Text;
-			string encryptedPath = dataPath.EncryptString(password);
-			System.IO.File.WriteAllText(dataPath, encryptedPath + "\n\nD");
 			Settings.Default.DATA_PATH = encryptedPath;
 			Settings.Default.Save();
 			Application.Restart();
