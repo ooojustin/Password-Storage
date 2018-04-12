@@ -30,10 +30,11 @@ namespace Password_Storage
 		public void UpdateAccounts() {
 			accountList = new List<PassStoreAccount>();
 			string data = GetData();
+			if (string.IsNullOrEmpty(data)) return;
 			// split by line break
 			string[] lines = data.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
 			foreach (string line in lines) {
-				string[] accountData = line.Split(new[] { splitter });
+				string[] accountData = line.Split(new[] { splitter }, StringSplitOptions.None);
 				PassStoreAccount account = new PassStoreAccount(accountData[0], accountData[1], accountData[2]);
 				accountList.Add(account);
 			}
@@ -41,28 +42,29 @@ namespace Password_Storage
 		
 		public void AddAccount(string description, string username, string password) {
 			PassStoreAccount account = new PassStoreAccount(description, username, password);
-			accountList.Add(accountList);
+			accountList.Add(account);
 		}
 		
 		// get data from datapath and decrypt it
 		public string GetData() {
-			if (!File.Exists(dataPath)) return string.Empty;
-			string encryptedData = File.ReadAllText(dataPath);
-			string data = encryptedData.DecryptString(password);
-			return data;
+			try {
+				string encryptedData = File.ReadAllText(dataPath);
+				string data = encryptedData.DecryptString(password);
+				return data;
+			} catch (Exception) {
+				return string.Empty;
+			}
 		}
 		
 		public void SaveData() {
 			if (!File.Exists(dataPath)) 
 				File.Create(dataPath);
-			string data;
+			string data = string.Empty;
 			foreach (PassStoreAccount account in accountList) {
-				string description = account.GetDescription();
-				string username = account.GetUsername();
-				string password = account.GetPassword();
-				string line = description + splitter + username + splitter + password;
+				string line = account.GetDescription() + splitter + account.GetUsername() + splitter + account.GetPassword();
 				data += line + Environment.NewLine;
 			}
+			data = data.EncryptString(password);
 			File.WriteAllText(dataPath, data);
 		}
 		

@@ -13,18 +13,15 @@ namespace Password_Storage
 	/// <summary>
 	/// Description of MainForm.
 	/// </summary>
-	public partial class MainForm : Form
-	{
-		public MainForm()
-		{
-			//
-			// The InitializeComponent() call is required for Windows Forms designer support.
-			//
+	public partial class MainForm : Form {
+		
+		private PassStore passStore;
+		
+		public MainForm(string dataPath, string password) {
 			InitializeComponent();
-			
-			//
-			// TODO: Add constructor code after the InitializeComponent() call.
-			//
-		}
+			this.FormClosing += (s, e) => Application.Exit();
+			passStore = new PassStore(dataPath, password);
+		}	
+		
 	}
 }

@@ -35,7 +35,8 @@ namespace Password_Storage
 		void BtnContinueClick(object sender, EventArgs e){
 			// storing a password isn't required, we use that as our encryption key
 			string dataPath = txtDataPath.Text;
-			Settings.Default.DATA_PATH = encryptedPath;
+			string password = txtPassword.Text;
+			Settings.Default.DATA_PATH = dataPath.EncryptString(password);
 			Settings.Default.Save();
 			Application.Restart();
 		}

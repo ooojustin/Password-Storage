@@ -29,7 +29,11 @@ namespace Password_Storage
 			if (needInit) 
 				new InitForm().Show();
 			else 
-				new MainForm().Show();
+				new LoginForm().Show();
+			
+			//Settings.Default.DATA_PATH = "";
+			//Settings.Default.Save();
+			
 			Application.Run();
 		}
 		
