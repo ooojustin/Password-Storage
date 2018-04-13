@@ -35,7 +35,7 @@ namespace Password_Storage
 				string encryptedDataPath =	Settings.Default.DATA_PATH;
 				dataPath = encryptedDataPath.DecryptString(password); // MIGHT FAIL
 			} catch (Exception) {
-				MessageBox.Show("Failed to verify master password.", "Password Storage", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				MessageBox.Show("Failed to verify master password.", "Password Storage", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				return;
 			}
 			openOther = true;

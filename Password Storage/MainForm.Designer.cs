@@ -42,7 +42,7 @@ namespace Password_Storage
 			this.btnAddAccount = new System.Windows.Forms.Button();
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.label1 = new System.Windows.Forms.Label();
-			this.btnExportCredentials = new System.Windows.Forms.Button();
+			this.btnExportAccounts = new System.Windows.Forms.Button();
 			this.btnCopyUsername = new System.Windows.Forms.Button();
 			this.btnCopyPassword = new System.Windows.Forms.Button();
 			this.btnDeleteAccounts = new System.Windows.Forms.Button();
@@ -68,10 +68,10 @@ namespace Password_Storage
 			this.dataGrid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
 			this.dataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-									this.Checked,
-									this.Description,
-									this.Username,
-									this.Password});
+			this.Checked,
+			this.Description,
+			this.Username,
+			this.Password});
 			this.dataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.dataGrid.GridColor = System.Drawing.Color.Black;
 			this.dataGrid.Location = new System.Drawing.Point(0, 0);
@@ -133,17 +133,18 @@ namespace Password_Storage
 			this.label1.TabIndex = 15;
 			this.label1.Text = "Selected Account(s):";
 			// 
-			// btnExportCredentials
+			// btnExportAccounts
 			// 
-			this.btnExportCredentials.BackColor = System.Drawing.Color.Black;
-			this.btnExportCredentials.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnExportCredentials.ForeColor = System.Drawing.Color.White;
-			this.btnExportCredentials.Location = new System.Drawing.Point(13, 395);
-			this.btnExportCredentials.Name = "btnExportCredentials";
-			this.btnExportCredentials.Size = new System.Drawing.Size(465, 26);
-			this.btnExportCredentials.TabIndex = 16;
-			this.btnExportCredentials.Text = "Export Credentials";
-			this.btnExportCredentials.UseVisualStyleBackColor = false;
+			this.btnExportAccounts.BackColor = System.Drawing.Color.Black;
+			this.btnExportAccounts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnExportAccounts.ForeColor = System.Drawing.Color.White;
+			this.btnExportAccounts.Location = new System.Drawing.Point(13, 395);
+			this.btnExportAccounts.Name = "btnExportAccounts";
+			this.btnExportAccounts.Size = new System.Drawing.Size(465, 26);
+			this.btnExportAccounts.TabIndex = 16;
+			this.btnExportAccounts.Text = "Export Account(s)";
+			this.btnExportAccounts.UseVisualStyleBackColor = false;
+			this.btnExportAccounts.Click += new System.EventHandler(this.BtnExportAccountsClick);
 			// 
 			// btnCopyUsername
 			// 
@@ -156,6 +157,7 @@ namespace Password_Storage
 			this.btnCopyUsername.TabIndex = 17;
 			this.btnCopyUsername.Text = "Copy Username";
 			this.btnCopyUsername.UseVisualStyleBackColor = false;
+			this.btnCopyUsername.Click += new System.EventHandler(this.BtnCopyUsernameClick);
 			// 
 			// btnCopyPassword
 			// 
@@ -168,6 +170,7 @@ namespace Password_Storage
 			this.btnCopyPassword.TabIndex = 18;
 			this.btnCopyPassword.Text = "Copy Password";
 			this.btnCopyPassword.UseVisualStyleBackColor = false;
+			this.btnCopyPassword.Click += new System.EventHandler(this.BtnCopyPasswordClick);
 			// 
 			// btnDeleteAccounts
 			// 
@@ -187,11 +190,11 @@ namespace Password_Storage
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-			this.ClientSize = new System.Drawing.Size(491, 469);
+			this.ClientSize = new System.Drawing.Size(491, 466);
 			this.Controls.Add(this.btnDeleteAccounts);
 			this.Controls.Add(this.btnCopyPassword);
 			this.Controls.Add(this.btnCopyUsername);
-			this.Controls.Add(this.btnExportCredentials);
+			this.Controls.Add(this.btnExportAccounts);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.panel1);
 			this.Controls.Add(this.btnAddAccount);
@@ -206,11 +209,12 @@ namespace Password_Storage
 			this.panel1.ResumeLayout(false);
 			this.ResumeLayout(false);
 			this.PerformLayout();
+
 		}
 		private System.Windows.Forms.Button btnDeleteAccounts;
 		private System.Windows.Forms.Button btnCopyPassword;
 		private System.Windows.Forms.Button btnCopyUsername;
-		private System.Windows.Forms.Button btnExportCredentials;
+		private System.Windows.Forms.Button btnExportAccounts;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Panel panel1;
 		private System.Windows.Forms.Button btnAddAccount;

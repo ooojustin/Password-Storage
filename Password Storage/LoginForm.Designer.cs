@@ -102,7 +102,7 @@ namespace Password_Storage
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-			this.ClientSize = new System.Drawing.Size(378, 114);
+			this.ClientSize = new System.Drawing.Size(378, 113);
 			this.Controls.Add(this.btnContinue);
 			this.Controls.Add(this.cbShowPassword);
 			this.Controls.Add(this.txtPassword);
@@ -115,6 +115,7 @@ namespace Password_Storage
 			this.Text = "Password Storage - Login";
 			this.ResumeLayout(false);
 			this.PerformLayout();
+
 		}
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.TextBox txtPassword;
