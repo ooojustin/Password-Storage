@@ -17,7 +17,7 @@ namespace Password_Storage
 		private const string splitter = ":::";
 		private string password;
 		private string dataPath;
-		List<PassStoreAccount> accountList;	
+		private List<PassStoreAccount> accountList;	
 		
 		
 			
@@ -27,6 +27,10 @@ namespace Password_Storage
 			UpdateAccounts(); // part of initialization
 		}
 		
+		public List<PassStoreAccount> GetAccounts() {
+			return accountList;
+		}
+		
 		public void UpdateAccounts() {
 			accountList = new List<PassStoreAccount>();
 			string data = GetData();
@@ -34,6 +38,7 @@ namespace Password_Storage
 			// split by line break
 			string[] lines = data.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
 			foreach (string line in lines) {
+				if (string.IsNullOrWhiteSpace(line)) continue;
 				string[] accountData = line.Split(new[] { splitter }, StringSplitOptions.None);
 				PassStoreAccount account = new PassStoreAccount(accountData[0], accountData[1], accountData[2]);
 				accountList.Add(account);
@@ -43,6 +48,12 @@ namespace Password_Storage
 		public void AddAccount(string description, string username, string password) {
 			PassStoreAccount account = new PassStoreAccount(description, username, password);
 			accountList.Add(account);
+			SaveData();
+		}
+		
+		public void DeleteAccount(PassStoreAccount account) {
+			accountList.Remove(account);
+			SaveData();
 		}
 		
 		// get data from datapath and decrypt it
