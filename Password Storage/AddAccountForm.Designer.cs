@@ -51,7 +51,7 @@ namespace Password_Storage
 			this.btnAddAccount.Location = new System.Drawing.Point(12, 170);
 			this.btnAddAccount.Name = "btnAddAccount";
 			this.btnAddAccount.Size = new System.Drawing.Size(353, 26);
-			this.btnAddAccount.TabIndex = 17;
+			this.btnAddAccount.TabIndex = 3;
 			this.btnAddAccount.Text = "Add Account";
 			this.btnAddAccount.UseVisualStyleBackColor = false;
 			this.btnAddAccount.Click += new System.EventHandler(this.BtnAddAccountClick);
@@ -64,7 +64,7 @@ namespace Password_Storage
 			this.txtDescription.Location = new System.Drawing.Point(12, 27);
 			this.txtDescription.Name = "txtDescription";
 			this.txtDescription.Size = new System.Drawing.Size(353, 23);
-			this.txtDescription.TabIndex = 15;
+			this.txtDescription.TabIndex = 0;
 			this.txtDescription.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			// 
 			// label4
@@ -85,7 +85,7 @@ namespace Password_Storage
 			this.txtUsername.Location = new System.Drawing.Point(12, 72);
 			this.txtUsername.Name = "txtUsername";
 			this.txtUsername.Size = new System.Drawing.Size(353, 23);
-			this.txtUsername.TabIndex = 19;
+			this.txtUsername.TabIndex = 1;
 			this.txtUsername.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			// 
 			// label1
@@ -106,7 +106,7 @@ namespace Password_Storage
 			this.txtPassword.Location = new System.Drawing.Point(12, 117);
 			this.txtPassword.Name = "txtPassword";
 			this.txtPassword.Size = new System.Drawing.Size(353, 23);
-			this.txtPassword.TabIndex = 21;
+			this.txtPassword.TabIndex = 2;
 			this.txtPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			this.txtPassword.UseSystemPasswordChar = true;
 			// 
@@ -125,7 +125,7 @@ namespace Password_Storage
 			this.cbShowPassword.Location = new System.Drawing.Point(13, 146);
 			this.cbShowPassword.Name = "cbShowPassword";
 			this.cbShowPassword.Size = new System.Drawing.Size(147, 18);
-			this.cbShowPassword.TabIndex = 22;
+			this.cbShowPassword.TabIndex = 4;
 			this.cbShowPassword.Text = "Show Password";
 			this.cbShowPassword.UseVisualStyleBackColor = true;
 			this.cbShowPassword.CheckedChanged += new System.EventHandler(this.CbShowPasswordCheckedChanged);

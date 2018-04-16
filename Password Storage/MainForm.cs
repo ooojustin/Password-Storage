@@ -30,7 +30,10 @@ namespace Password_Storage
 			foreach (PassStoreAccount account in passStore.GetAccounts()) {
 				string description = account.GetDescription();
 				string username = account.GetUsername();
-				string password = account.GetPassword();
+				string password = string.Empty;
+				int passLength = account.GetPassword().Length;
+				for (int i = 0; i < passLength; i++)
+					password += '•';
 				int column = dataGrid.Rows.Add(false, description, username, password);
 				for (int i = 0; i < dataGrid.ColumnCount; i++) {
 					DataGridViewCell cell = dataGrid.Rows[column].Cells[i];
@@ -56,8 +59,12 @@ namespace Password_Storage
 		}
 		
 		// delete selected accounts from the grid view		
-		void BtnDeleteAccountsClick(object sender, EventArgs e){
+		void BtnDeleteAccountsClick(object sender, EventArgs e) {
 			List<DataGridViewRow> selected = SelectedAccounts();
+			if (selected.Count == 0) {
+				MessageBox.Show("Please select the account(s) you'd like to delete.", "Password Storage", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return;
+			}
 			DialogResult confirm = MessageBox.Show("Are you sure you want to continue?\nThis action cannot be reversed.\n" + selected.Count + " accounts will be deleted.", "Password Storage", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 			if (confirm != DialogResult.Yes) return;
 			List<PassStoreAccount> accounts = passStore.GetAccounts();
@@ -77,7 +84,7 @@ namespace Password_Storage
 			List<DataGridViewRow> selected = SelectedAccounts();
 			int total = selected.Count; // how many selected rows there are
 			if (total == 0) {
-				MessageBox.Show("Please select the accounts you'd like to export.", "Password Storage", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show("Please select the account(s) you'd like to export.", "Password Storage", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				return;
 			}
 			List<PassStoreAccount> accounts = passStore.GetAccounts();
@@ -128,12 +135,6 @@ namespace Password_Storage
 			} catch (Exception) {
 				MessageBox.Show("Failed to copy information to clipboard.", "Password Storage", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
-		}
-		
-		
-		
-		
-		
-		
+		}								
 	}
 }

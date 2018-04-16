@@ -26,14 +26,8 @@ namespace Password_Storage
 			Application.SetCompatibleTextRenderingDefault(false);
 			string dataPath = Settings.Default.DATA_PATH;
 			bool needInit = string.IsNullOrWhiteSpace(dataPath);
-			if (needInit) 
-				new InitForm().Show();
-			else 
-				new LoginForm().Show();
-			
-			//Settings.Default.DATA_PATH = "";
-			//Settings.Default.Save();
-			
+			if (needInit) new InitForm().Show();
+			else new LoginForm().Show();
 			Application.Run();
 		}
 		

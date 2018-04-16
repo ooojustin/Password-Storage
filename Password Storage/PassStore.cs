@@ -47,7 +47,7 @@ namespace Password_Storage
 		
 		public void AddAccount(string description, string username, string password) {
 			PassStoreAccount account = new PassStoreAccount(description, username, password);
-			accountList.Add(account);
+			accountList.Insert(0, account);
 			SaveData();
 		}
 		
